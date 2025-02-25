@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import Messenger from './components/messenger'
+import { GoogleOAuthProvider } from '@react-oauth/google'
+import Accountprovider from './components/context/Accountprovider'
 function App() {
   const [count, setCount] = useState(0)
-
+  const clientId = "958670145374-hb6785atpp3effhs6fhcvmpgaatb22s6.apps.googleusercontent.com"
   return (
     <>
-      <div>hello
-        </div>
+    <GoogleOAuthProvider clientId={clientId}><Accountprovider><Messenger></Messenger></Accountprovider></GoogleOAuthProvider>
     </>
-  )
+  );
 }
 
 export default App
