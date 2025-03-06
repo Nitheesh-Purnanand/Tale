@@ -1,6 +1,12 @@
+import { Box } from "@mui/material"
+
 const Emptychat = () =>{
 return(<>
-<p>Hello from empty chat</p>
+<Box>
+    <Box>
+        <img src={"/"}/>
+    </Box>
+</Box>
 </>)
 }
 export default Emptychat

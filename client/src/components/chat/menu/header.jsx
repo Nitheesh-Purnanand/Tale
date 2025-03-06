@@ -1,8 +1,9 @@
-import { useContext } from "react"
+import { useContext,useState } from "react"
 import { AccountContext } from "../../context/Accountprovider"
 import { Box,styled } from "@mui/material"
 import ChatIcon from '@mui/icons-material/Chat';
 import Headermenu from "./headermenu";
+import Infodrawer from "../../drawer/infodrawer";
 
 const Component = styled(Box)`
 height:44px;
@@ -28,15 +29,20 @@ height:40,width:40,borderRadius:"50%"
 })
 const Header = () =>{
     const {account} = useContext(AccountContext)
+    const [open, setopen] = useState(false)
+    const toggledrawer =()=>{
+            setopen(true)
+    }
     return (<>
     <Component>
-        <Image src={account.picture} alt="dp" />
+        <Image src={account.picture} alt="profile" onClick={toggledrawer}/>
         <Wrapper>
             <ChatIcon></ChatIcon>
             {/* <MoreVertIcon></MoreVertIcon> */}
-            <Headermenu></Headermenu>
+            <Headermenu setopen={setopen}></Headermenu>
         </Wrapper>
     </Component>
+        <Infodrawer open={open} setopen={setopen}></Infodrawer>
     </>)
 }
 export default Header

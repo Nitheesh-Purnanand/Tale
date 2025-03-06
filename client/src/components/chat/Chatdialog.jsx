@@ -26,7 +26,6 @@ const Chatdialog = () =>{
         boxShadow: "2px",
         borderRadius:"5px",
         overflow: "none",
-        // border:"2px solid black",
     };
     return (
         <>
