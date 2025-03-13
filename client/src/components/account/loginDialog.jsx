@@ -3,14 +3,16 @@ import { jwtDecode } from "jwt-decode";
 import { useContext } from "react";
 import { AccountContext } from "../context/Accountprovider";
 import { GoogleLogin } from "@react-oauth/google";
+import { addUser } from "../../service/api";
 
 const Logindialog = () => {
     const { setAccount } = useContext(AccountContext);
 
-    const onloginsuccess = (res) => {
+    const onloginsuccess = async(res) => {
         if (res.credential) {
             const decoded = jwtDecode(res.credential);
             setAccount(decoded);
+            await addUser(decoded)
             console.log(decoded);
         } else {
             console.error("Google login response does not contain a credential.");
