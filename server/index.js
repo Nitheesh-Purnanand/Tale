@@ -1,23 +1,25 @@
-import express from "express";
-import connection from "./database/db.js";
-import route from "./routes/route.js";
-import cors from "cors";
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
+import Connection from './database/db.js';
+import Routes from './routes/route.js';
+
+
+dotenv.config();
 const app = express();
 
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-}));
+const PORT = 8000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
 
-connection();
+Connection(username, password);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 
-app.use('/', route);
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use('/', Routes);
