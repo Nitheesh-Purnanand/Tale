@@ -2,7 +2,7 @@ import { Dialog,Box, styled } from "@mui/material"
 import Menu from "./menu/menu";
 import Emptychat from "./chat/emptychat"
 import { Component } from "react";
-
+import Chatbox from "./chat/chatbox";
 
 const Chatdialog = () =>{
     const Component1 = styled(Box)`
@@ -39,7 +39,8 @@ const Chatdialog = () =>{
         <Menu/>
     </LeftComponent>
     <Rightcomponent>
-        <Emptychat/>
+        {/* <Emptychat/> */}
+        <Chatbox></Chatbox>
     </Rightcomponent>
 </Component1>
 
