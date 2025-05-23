@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 const Username = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
-
+  
 const connection = async () =>{
     const MONGODB_URI = "mongodb://127.0.0.1:27017/whatsapp_clone_users";
     const URL = `mongodb+srv://${Username}:${PASSWORD}@clone-whatsapp.9rgcf.mongodb.net/?retryWrites=true&w=majority&appName=clone-whatsapp`
